@@ -1,6 +1,6 @@
 ## Lessons Learned from Orchestrating Notebooks in a Medallion Architecture with Apache Airflow Job Task
 
-While building a data project in Microsoft Fabric based on a **medallion architecture**, I structured the solution using **modular notebooks**. For each layer—**bronze, silver**, and **gold**—a **parent notebook** orchestrates the workflow and calls a **child notebook**, passing relevant parameters to it.
+While building a data project in Microsoft Fabric based on a **medallion architecture**, I structured the solution using **modular notebooks**. For each layer—**bronze, silver**, and **gold**—a **parent notebook** orchestrates the workflow and calls a **child notebook**. The parent contains a list of parameter objects that describe things like the source table, create table statements and other things. Each parameter object is passed to a child notebook which the executes whatever it needs to to. And since there is one parameter object for each table that needs to be processed, there are a lot of child notebooks that need to run on each layer.
 
 For example:
 
@@ -17,9 +17,9 @@ For example:
 
 During development, this modular approach worked well. I used a **DAG (Directed Acyclic Graph)** structure within each layer to control execution order.
 
-However, once I began orchestrating the parent notebooks using a **Fabric Data Pipeline**, execution times increased unexpectedly. After researching, I learned that **notebook orchestration in Fabric can lead to performance issues** if not carefully designed. Each notebook call creates a **new compute session**, which can quickly consume **capacity units (CUs)** and slow things down—especially in modular setups. Pipelines are intuitive and visually helpful, but they **don’t always handle dependencies or session sharing efficiently.**
+However, once I began orchestrating the parent notebooks using a **Fabric Data Pipeline**, execution times increased unexpectedly and substantially. After researching, I learned that **notebook orchestration in Fabric can lead to performance issues** if not carefully designed. Each notebook call creates a **new compute session**, which can quickly consume **capacity units (CUs)** and slow things down—especially in modular setups. Pipelines are intuitive and visually helpful, but they **don’t always handle dependencies or session sharing efficiently.**
 
-To better orchestrate my parent-child notebook setup, I began exploring Apache Airflow, which is now partially integrated into Microsoft Fabric. The Apache Airflow job allows you to define complex workflows using DAGs, giving you more control over execution order, dependencies, and resource usage.
+To improve the performance of the orchestration of my parent-child notebook setup, I began exploring Apache Airflow, which is now partially integrated into Microsoft Fabric. The Apache Airflow job allows you to define complex workflows using DAGs, giving you more control over execution order, dependencies, and resource usage. And it is a lot faster than Data Pipelines while doing so.
 
 Apache Airflow job provides:
 
@@ -56,15 +56,16 @@ In the Fabric Tenant Admin Settings, make sure that you have enabled the access 
 In the Azure Portal, in Entra ID, create an App Registration. 
 You can follow the instructions in the [Microsoft Documentation](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate)
 
+<!-- Wir haben noch Destop App für insomnia hinzugefügt, man müsste mal testen, ob das notwendig ist. Das mit insomnia muss aber so oder so erwähnt werden, wegen dem, Refresh token. Das geht ohne ziemlich sicher nicht -->
 The basic steps are:
 
-1. Provide a name, f.e. AirFlow
+1. Provide a name, e.g., AirFlow
 2. Under *Authentication*, add a Platform, web link, with the Redirect URI set to **https://login.microsoftonline.com/common/oauth2/nativeclient**
 
 
 ![uri](./images/azure_uri.png)
 
-3. Under *Certificates and secrets*, add a *New client secret*. Beware that you will need it later, so I recommend that you save it in an Azure Key Vault, otherwise you need to copy the **value** right away or you won't be able to access it a a later point. 
+3. Under *Certificates and secrets*, add a *New client secret*. Beware that you will need it later, so I recommend that you save it in an Azure Key Vault or a password maanager, otherwise you need to copy the **value** right away or you won't be able to access it a a later point. 
 
 ![secret](./images/secret.png)
 
@@ -75,7 +76,7 @@ The basic steps are:
 
 ![apiper](./images/azure_api_per.png)
 
-5. Copy the following parameters from the created App for later use (f.e. paste it in a .txt file):
+5. Copy the following parameters from the created App for later use (e.g., paste it in a .txt file):
 
 - Tenant ID
 - Object ID
@@ -160,11 +161,11 @@ https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize?client_id={cl
 
 ![import](./images/insomnia__6.png)
 
-Copy the URL and paste it in your browser. The browser URL will be replaced with a new URL
+Copy the URL and paste it in your browser. The browser URL will be replaced with a new URL. Doing this in the browser is not ideal and I will look further how to this entirely in Insomnia. For now it is clunky but works.
 
 https://redirect.insomnia.de/?**code**=1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAFsvAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P_37KF9rUF&state=12345&session_state=004e7609-e2f8-3e80-fa3b-34fe80803747
 
-You’ll need to copy the **authorization code**, which is the value that appears after the *code field* in the URL until the first & (unpercent) sign (right before **&state**)
+You’ll need to copy the **authorization code**, which is the value that appears after the *code field* in the URL until the first & (ampersand) sign (right before **&state**)
 
 This code is only needed once—after that, **Apache Airflow will use the refresh token** for all future connections.
 
@@ -230,7 +231,7 @@ Fill in the following fields:
  The explanation is that your Azure App Registration (used in your Airflow fabric_test connection) is registered as a public client. But you're providing a client secret, which is not allowed for public clients.  So I omitted the Client Secret of the SPN and my DAG run without any issue.
 
 
-After saving the new connection you might get an "500 Internal Server Error", refresh the page and you should see your connection. 
+After saving the new connection you might get an "500 Internal Server Error" (I got them repeatedly), refresh the page and you should see your connection. 
 
 ![airflow](./images/airflow_8.png)
 
