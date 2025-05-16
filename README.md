@@ -113,17 +113,17 @@ We used [Insomnia](https://insomnia.rest/download) for this. We have prepared a 
 
 2. Import the provided template refreshtoken.yaml 
 
-![import](./images/Insomnia_1.png)
+![import](./images/insomnia_1.png)
 
   - Click on Scan.
 
-![import](./images/Insomnia_2.png)
+![import](./images/insomnia_2.png)
 
   - Imsomnia will display which resources will be imported.
 
   - Click on Import. 
 
-![import](./images/Insomnia_3.png)
+![import](./images/insomnia_3.png)
 
 3. Go to the Collection *RefreshToken*. A collection contains all request pertaining to the same topic. 
 
