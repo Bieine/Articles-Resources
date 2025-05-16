@@ -144,7 +144,7 @@ To change those parameters you need to edit the environment *YourCompany*.
 ![import](./images/insomnia_4.png)
 
 
-![import](./images/Insomnia_5.png)
+![import](./images/insomnia_5.png)
 
 4. The collection has two request, a GET Request and a POST request. 
 
