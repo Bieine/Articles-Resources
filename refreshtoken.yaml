@@ -1,0 +1,212 @@
+type: collection.insomnia.rest/5.0
+name: RefreshToken
+meta:
+  id: wrk_bcedeaa62ee74bada06c0ac9111bee48
+  created: 1747402860683
+  modified: 1747402860683
+collection:
+  - url: "{{ _.baseUrl }}/{{ _.tenantId }}/oauth2/v2.0/authorize"
+    name: Get Refresh token
+    meta:
+      id: req_43c11de51fb543349eef408bb1dc8e62
+      created: 1747213983731
+      modified: 1747215192389
+      isPrivate: false
+      sortKey: -1747213983731
+    method: GET
+    parameters:
+      - name: client_id
+        value: "{{ _.clientId }}"
+        disabled: false
+        id: pair_3bf45c18e30c40d1a156b4b53aef311f
+      - name: response_type
+        value: code
+        disabled: false
+        id: pair_875769ce31494fccb975940e84004bbf
+      - name: redirect_uri
+        value: "{{ _.redirectUri }}"
+        disabled: false
+        id: pair_55dd2f41be59455595edb9b534edd5e0
+      - name: response_mode
+        value: query
+        disabled: false
+        id: pair_7baec1b23c09415eba7fa474b875397a
+      - name: state
+        value: "12345"
+        disabled: false
+        id: pair_9d3d0cd4f88e4e5096285ce1ff16da0b
+      - name: "scope "
+        value: https://api.fabric.microsoft.com/Item.Execute.All
+          https://api.fabric.microsoft.com/Item.ReadWrite.All offline_access
+          openid profile
+        disabled: false
+        id: pair_02a56d643b7549ecb17abd4d1cb28f77
+      - name: client_secret
+        value: "{{ _.clientSecret }}"
+        disabled: false
+        id: pair_b3af6dd47b394dbe8b92ae00bf6a544c
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseUrl }}/{{ _.tenantId }}/oauth2/v2.0/token"
+    name: Get Refresh token
+    meta:
+      id: req_82606ca565f34e3aa403a3d3d2edf709
+      created: 1747215005724
+      modified: 1747226015533
+      isPrivate: false
+      sortKey: -1747213983681
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: client_id
+          value: "{{ _.clientId }}"
+          disabled: false
+          id: pair_c8b81ca84b9e42b1a6feb74b139d9303
+        - name: code
+          value: 1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAFsvAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P-EjVZpd90by-vi6bV70bibXbHL6-I2K6vbFd0xYL313dAh40WepUi_n48J98AHxM65CQjmc1wC2gn7XD2QKxSrfKq0uDxKgicB1pQbkTmLdgRKJh4dP33Ry_G-nFzGVQX5rg5RE6x_j8aU4uNKIAecyBwMk_lCbtNuA5pmz9G2eBqhCBXHSHn8CI8KYl8W0uEMyi6udlAK7o6GvFBIIGgewRD7fPeol8vhN0yNwxl2gKeeYoLi5tqQoILSpDmdhZ3_C11QaG8NcXBXs8ZrwD7Q_EcUmGiC4dB5E6OOh18iNj4AWYM9pMwscLGT6cWrYdoauQKwC87u0iVtNXx15rCqhKWAFc8deD8d2jDk83GBUKT-JRrnGgBO6Kt8Xck4gx2M36r1qUKUu0qLXlBtqXOdRlP1BzPx0xUzGYe1Rhzy_V60HtoYBZMQD4N0Xy_mITeI_kGtCKxwPyfYbsKleY9vULHJ6xgrOUtcFP8hA-XWXoP5SjHAE2q2LaeMH6hzt7nAESpQb4TAIQMmSFvNZtKcuVw7Xv5pWw0B66ct9BPnSdvtK3HUHNZBpDCJ9W3nwbCglq7-rcU7XAHdEsgl_-xjwt5sl_nqwG53EU-ALPGDVfGEdueWoyj8K9bIzlh6jRTMmpZf5Xg1I2sWaQAE5UdWKmTL3DMOTfK-X9if_1gWex1M6Q8dtUPwOOiFx6CoEkq9AKsn7P6Ao3Qtp7YHTPgwKT6WQfBjAcRPbxohLrbHupa7TlWqAdklLt_jRqqxxColPY7wAKSwNn5XtG2oBEKnZO2ATIvTkDpbFXfmJGZ7Kih3RX27_ME3cDslBjz_h2OvU87nN-bVL9Xya5_RpAEsVG1FWJKRODXpfeU
+          disabled: false
+          id: pair_c065d2ac03314405b536f2b147e819fe
+        - name: redirect_uri
+          value: "{{ _.redirectUri }}"
+          disabled: false
+          id: pair_f1b4aee5b3c341f8843617f93f65dc1c
+        - name: scope
+          value: https://api.fabric.microsoft.com/.default
+          disabled: false
+          id: pair_6992287321704b74aa91fac4346e760f
+        - name: grant_type
+          value: authorization_code
+          disabled: false
+          id: pair_8a01ce06e2184472876e3e550d9a5f51
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_d7fb67b71e6f4c769ad4fc0ed7a80101
+    created: 1747213983670
+    modified: 1747226016695
+  cookies:
+    - id: ff15b7c2-6876-4ed3-bf83-b3119f7b1640
+      key: buid
+      value: 1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAAAvAA.AQABGgEAAABVrSpeuWamRam2jAF1XRQEqVzvbbq9igetHFYo-RqWzGQ9oyIs42-J35s7Q4k2pLRjETecWu7XmSFD8Cm76weOl1TrALrcMUTQZ3p9wxaC6sy5WYQEy3HlALjPzGWvTusgAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+    - id: 7ee64896-365c-4798-a066-a2e47ed6c1f8
+      key: esctx
+      value: PAQABBwEAAABVrSpeuWamRam2jAF1XRQE3Q6MToJvXrb0vRG7Er9FIyP47zrlsuDoHDW1y00IPfXOIjnLERC9Uumeysz5w9U-Yh7fQ3IdVcnRwKoOEk54ppoeYOUzijt6zJXA_dT2VGdet32tsybu2YgvjZX5MO7tsBIw0GEkFYrWMkq6Y2sh7-gjdJIkRQlKxFgNt8bmxKYgAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+    - id: 1444ec44-699b-4d5c-8a10-1d609091df3e
+      key: esctx-j0OE2W9bjQ
+      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQE9_hwVJm-Q58VBFv3BCpVHjDHVdy4fjGMonoy8dUXaWjCGRH_ANtCW7F4jzkmzyBuT3XkED2WpAnl9lNcchsBMsFqeia98cvPjlAuxvjI0vUCP2-WOGw7CNBv_Uf59URF-KeNWvc4h-T5ROWbSCqiayAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+    - id: 451fae06-7d6d-4a98-a942-d2f44629bb99
+      key: fpc
+      value: AiYr1xJ4mYtBnsLVqO1lUE04O4MCAQAAAIOEtt8OAAAA2f470AEAAAChhLbfDgAAAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+    - id: 73716ed2-3b4a-4508-8856-af4aab836abf
+      key: x-ms-gateway-slice
+      value: estsfd
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+    - id: 8ce7c16e-72bc-49eb-ad3a-89df07206fd9
+      key: stsservicecookie
+      value: estsfd
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+    - id: 07612b59-a6f3-440d-bd70-86333ad853de
+      key: esctx-MVj2c4b5MYU
+      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQEw6oc5Ibww4n_skarhCbuHcURxNBizKvCcCndkgCLrZoC4QS8L_1Nv-lDtJWgfZgR1GV3lGlC-kWhRCLpBZhbtuGtOKShV7dAqi__KgKGhfCOlmqfKiGO2NDVb6vt3Rk4MZejeaUnp5XVaXRhz7gu5yAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+    - id: ab15ad2c-ef59-461b-b51e-9c31469c13a6
+      key: esctx-DYjebbv0s9g
+      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQEswbJGrZIRCNVRZ0WIbhOGQBZaAt49oLla8ArdHLqYwYuX0IOoOXfisD38WPYw0MH3CMQWNo5dMi-g6oLUEnQejBouVPVW4IkRwyQVKgxsbd7NIq5QxUMEhsfNA6PpiuAExcAnBVXWaD6IzDjLFRXOyAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+    - id: 094ee69f-23ce-4441-8169-152d879f489f
+      key: esctx-QNZhmGl1iw
+      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQE-9ou9R81qfW8UpsW-2rl7ZH8YyQC6vIhldRMItJXAnC5Dm0AZonJfi90GQalh4YSQWTvBEtLC-5B8MsjXnmlXxXMM2q0Oomm2fPBlmvKbVNlssrYeGz5fwGv5KEB-XTgoRVoXCdWEXo1PsSwjFpGGyAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+    - id: 07c19de8-561d-4c0b-99b3-f22bda9eaeab
+      key: esctx-7Yw5kLHDBU
+      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQE3pt4rtz9Y8jVj9YyA7zaRTlYmHPREByatK9MjfYKT7glO9O-NZ4K_13xhQ-OESveWmo5XDLlA3I5b7PyZHtP-cE6MoSgnE-9EhLZJZjjBtbjFgfOUzQL7hWYxKDvblFX0t2JA6EFTmYsJgk5NQuNeSAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+environments:
+  name: Base Environment
+  meta:
+    id: env_10b35a2df926457caf43c55f6aa2b101
+    created: 1747213983667
+    modified: 1747216164781
+    isPrivate: false
+  data:
+    baseUrl: https://login.microsoftonline.com
+    redirectUri: https://redirect.insomnia.de
+  subEnvironments:
+    - name: SteinauTech
+      meta:
+        id: env_0aa5d63daa00419dab6ec58d64ed8fb3
+        created: 1747216108847
+        modified: 1747402958944
+        isPrivate: false
+        sortKey: 1747216108845
+      data:
+        tenantId: string
+        clientId: string
+        clientSecret: string
