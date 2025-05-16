@@ -10,6 +10,11 @@ For example:
 
 ```ParentNotebookGoldMerge``` calls the  notebook ```ChildNotebookGold``` which joins the processed data into final dimension or fact tables.
 
+
+![spn](./images/parent_notebook.png)
+
+![spn](./images/child_notebook.png)
+
 During development, this modular approach worked well. I used a **DAG (Directed Acyclic Graph)** structure within each layer to control execution order.
 
 However, once I began orchestrating the parent notebooks using a **Fabric Data Pipeline**, execution times increased unexpectedly. After researching, I learned that **notebook orchestration in Fabric can lead to performance issues** if not carefully designed. Each notebook call creates a **new compute session**, which can quickly consume **capacity units (CUs)** and slow things down—especially in modular setups. Pipelines are intuitive and visually helpful, but they **don’t always handle dependencies or session sharing efficiently.**
