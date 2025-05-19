@@ -1,16 +1,16 @@
 type: collection.insomnia.rest/5.0
-name: RefreshToken
+name: RefreshToken Generic
 meta:
-  id: wrk_bcedeaa62ee74bada06c0ac9111bee48
-  created: 1747402860683
-  modified: 1747402860683
+  id: wrk_17ac082b023c4355ac6bde94485d8db2
+  created: 1747310874575
+  modified: 1747653780042
 collection:
   - url: "{{ _.baseUrl }}/{{ _.tenantId }}/oauth2/v2.0/authorize"
-    name: Get Refresh token
+    name: Get Authorization Code
     meta:
-      id: req_43c11de51fb543349eef408bb1dc8e62
+      id: req_4f12f0033dd74e71be10439252d1b661
       created: 1747213983731
-      modified: 1747215192389
+      modified: 1747312614297
       isPrivate: false
       sortKey: -1747213983731
     method: GET
@@ -59,9 +59,9 @@ collection:
   - url: "{{ _.baseUrl }}/{{ _.tenantId }}/oauth2/v2.0/token"
     name: Get Refresh token
     meta:
-      id: req_82606ca565f34e3aa403a3d3d2edf709
+      id: req_9a1c04002b4b4824b938cdec281cc47c
       created: 1747215005724
-      modified: 1747226015533
+      modified: 1747384358984
       isPrivate: false
       sortKey: -1747213983681
     method: POST
@@ -73,7 +73,7 @@ collection:
           disabled: false
           id: pair_c8b81ca84b9e42b1a6feb74b139d9303
         - name: code
-          value: 1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAFsvAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P-EjVZpd90by-vi6bV70bibXbHL6-I2K6vbFd0xYL313dAh40WepUi_n48J98AHxM65CQjmc1wC2gn7XD2QKxSrfKq0uDxKgicB1pQbkTmLdgRKJh4dP33Ry_G-nFzGVQX5rg5RE6x_j8aU4uNKIAecyBwMk_lCbtNuA5pmz9G2eBqhCBXHSHn8CI8KYl8W0uEMyi6udlAK7o6GvFBIIGgewRD7fPeol8vhN0yNwxl2gKeeYoLi5tqQoILSpDmdhZ3_C11QaG8NcXBXs8ZrwD7Q_EcUmGiC4dB5E6OOh18iNj4AWYM9pMwscLGT6cWrYdoauQKwC87u0iVtNXx15rCqhKWAFc8deD8d2jDk83GBUKT-JRrnGgBO6Kt8Xck4gx2M36r1qUKUu0qLXlBtqXOdRlP1BzPx0xUzGYe1Rhzy_V60HtoYBZMQD4N0Xy_mITeI_kGtCKxwPyfYbsKleY9vULHJ6xgrOUtcFP8hA-XWXoP5SjHAE2q2LaeMH6hzt7nAESpQb4TAIQMmSFvNZtKcuVw7Xv5pWw0B66ct9BPnSdvtK3HUHNZBpDCJ9W3nwbCglq7-rcU7XAHdEsgl_-xjwt5sl_nqwG53EU-ALPGDVfGEdueWoyj8K9bIzlh6jRTMmpZf5Xg1I2sWaQAE5UdWKmTL3DMOTfK-X9if_1gWex1M6Q8dtUPwOOiFx6CoEkq9AKsn7P6Ao3Qtp7YHTPgwKT6WQfBjAcRPbxohLrbHupa7TlWqAdklLt_jRqqxxColPY7wAKSwNn5XtG2oBEKnZO2ATIvTkDpbFXfmJGZ7Kih3RX27_ME3cDslBjz_h2OvU87nN-bVL9Xya5_RpAEsVG1FWJKRODXpfeU
+          value: 1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAFsvAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P8WGUVoeItz3PP5MBBV1VXlUd1VDZNl1o_uVm7TK7yQYAUBjyezDfK-wXDZ3dY14HuJ1oBnFm-4c58cfuBaxEm2HkZ5HmDw7bBm5VgvaJzgqK0N6KWG8VhhwBnzY5u0pcJWZnWmqQ0zpI59fjaHQag8nxQLH1MIFIgFOhGTlToVux24rT_pPMMYkZzAWiMZZksVNuwrYOun76hodyd-oJskAWHNc1AlEZP9L2V_QRYrpiquM4jDMNFzxfvd3NB3TnBZ8m52q4B4nt6c-0ENDO8_Ymc7s1fRIFcvxuQLzxlQqI8CwjtBeR_ZwDboUZof6NQYvkjc8HsoQ79JWJjIsjoBYHjE9Dv20AmTg54VJ5bw3x31IZ6jRHW2WBD5-j8mnTFdHjiNPEw02F680LpXOAz_u51XMaia1fS8iD6paGpllza1WCCaHyM16A1ZXv-GVd1hakbKLor2rWmjPc-TDqRNZ4ML5u9zgXKXhpy_HSs_mv0Us8_UQGX2hLpzwzoy3OeGcvOznhOdCFxsTPPmzJ9DSAFyl9PAd2lY-UQPv7mJCzgMPOGo2FXrMgYkInqvfxkiAmObqBXXC9v6wgiCux36mF0Uxru7-wZDBjYmnhoVgwUGeL-_vmsBBQd90x-P98dizTeuazAZMxQWuvkAuW_kmQxbHbFJJ1DIHx33zcBlqjjV8PFlZOuo_GyER5DK8aApeWWucGqAwg4EfUUILThHpI8aeI7LRU2Hadj0ySGciKdLeP2MOVoj4-pqMA7b-EvYYp4iPoMRKCpVi6yKTst71KNvTovx3Ppk73EvJ7VpMfwc7Le12K760fFkmfUL8TaUKACuQhR22aRoHtRQbPi0KMWYp7x560-Fqw
           disabled: false
           id: pair_c065d2ac03314405b536f2b147e819fe
         - name: redirect_uri
@@ -104,94 +104,139 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_d7fb67b71e6f4c769ad4fc0ed7a80101
+    id: jar_42461f472f0749a9824c9ea9c45cf698
     created: 1747213983670
-    modified: 1747226016695
+    modified: 1747384361181
   cookies:
-    - id: ff15b7c2-6876-4ed3-bf83-b3119f7b1640
-      key: buid
-      value: 1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAAAvAA.AQABGgEAAABVrSpeuWamRam2jAF1XRQEqVzvbbq9igetHFYo-RqWzGQ9oyIs42-J35s7Q4k2pLRjETecWu7XmSFD8Cm76weOl1TrALrcMUTQZ3p9wxaC6sy5WYQEy3HlALjPzGWvTusgAA
+    - key: buid
+      value: 1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAAAvAA.AQABGgEAAABVrSpeuWamRam2jAF1XRQE2B9pD2nqZM_-bj0RsP0vQSx5sHoIapzUrzHJBN2KEEDz7IyaZIysvKXKrXyqXMTl-8Nz-yVmp136M6gXaiZwqAiUavd2ullk-YBcma5XoVUgAA
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: true
-    - id: 7ee64896-365c-4798-a066-a2e47ed6c1f8
-      key: esctx
-      value: PAQABBwEAAABVrSpeuWamRam2jAF1XRQE3Q6MToJvXrb0vRG7Er9FIyP47zrlsuDoHDW1y00IPfXOIjnLERC9Uumeysz5w9U-Yh7fQ3IdVcnRwKoOEk54ppoeYOUzijt6zJXA_dT2VGdet32tsybu2YgvjZX5MO7tsBIw0GEkFYrWMkq6Y2sh7-gjdJIkRQlKxFgNt8bmxKYgAA
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-15T13:19:28.110Z
+      sameSite: none
+      id: 68c73b1c-016c-43a9-adb4-c280ff7f16f2
+    - key: esctx
+      value: PAQABBwEAAABVrSpeuWamRam2jAF1XRQE5LMoWS57YqqG_uBQjnHiyKqNOoW_v3ks826QK8BEgQbTdy49Z9Dq4GtPIDpeflfuLHfYrZD-7RkY2P87aOHWT3yK9IqE3ZkvM4MOI7YiItpevD7t6E1tmAALPciW74PXDAnyDOBbDCcopqhEoHmkBBC7txdHqLBPHG4VeVvylZIgAA
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: false
-    - id: 1444ec44-699b-4d5c-8a10-1d609091df3e
-      key: esctx-j0OE2W9bjQ
-      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQE9_hwVJm-Q58VBFv3BCpVHjDHVdy4fjGMonoy8dUXaWjCGRH_ANtCW7F4jzkmzyBuT3XkED2WpAnl9lNcchsBMsFqeia98cvPjlAuxvjI0vUCP2-WOGw7CNBv_Uf59URF-KeNWvc4h-T5ROWbSCqiayAA
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-15T13:19:28.110Z
+      sameSite: none
+      id: 82afb2f6-3291-4407-a98b-21e17482470c
+    - key: esctx-j0OE2W9bjQ
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: false
-    - id: 451fae06-7d6d-4a98-a942-d2f44629bb99
-      key: fpc
-      value: AiYr1xJ4mYtBnsLVqO1lUE04O4MCAQAAAIOEtt8OAAAA2f470AEAAAChhLbfDgAAAA
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-15T12:40:11.894Z
+      sameSite: none
+      id: f30569ee-a04e-4231-8309-aba51183313b
+    - key: fpc
+      value: AiYr1xJ4mYtBnsLVqO1lUE3Z_jvQAwAAABnvuN8OAAAA
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: true
-    - id: 73716ed2-3b4a-4508-8856-af4aab836abf
-      key: x-ms-gateway-slice
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-16T08:32:41.181Z
+      sameSite: none
+      id: e27fbeb1-03f4-4081-b03c-e149c8934b73
+    - key: x-ms-gateway-slice
       value: estsfd
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: true
-    - id: 8ce7c16e-72bc-49eb-ad3a-89df07206fd9
-      key: stsservicecookie
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-16T08:32:41.181Z
+      sameSite: none
+      id: c06d1b96-c734-48c1-b722-82a72fd77a7c
+    - key: stsservicecookie
       value: estsfd
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: true
-    - id: 07612b59-a6f3-440d-bd70-86333ad853de
-      key: esctx-MVj2c4b5MYU
-      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQEw6oc5Ibww4n_skarhCbuHcURxNBizKvCcCndkgCLrZoC4QS8L_1Nv-lDtJWgfZgR1GV3lGlC-kWhRCLpBZhbtuGtOKShV7dAqi__KgKGhfCOlmqfKiGO2NDVb6vt3Rk4MZejeaUnp5XVaXRhz7gu5yAA
+      creation: 2025-05-15T12:40:11.890Z
+      id: df24e892-339b-4383-ad73-e21ce7e2976e
+    - key: esctx-MVj2c4b5MYU
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: false
-    - id: ab15ad2c-ef59-461b-b51e-9c31469c13a6
-      key: esctx-DYjebbv0s9g
-      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQEswbJGrZIRCNVRZ0WIbhOGQBZaAt49oLla8ArdHLqYwYuX0IOoOXfisD38WPYw0MH3CMQWNo5dMi-g6oLUEnQejBouVPVW4IkRwyQVKgxsbd7NIq5QxUMEhsfNA6PpiuAExcAnBVXWaD6IzDjLFRXOyAA
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-15T12:40:11.894Z
+      sameSite: none
+      id: 0a8aa777-ffda-435c-a97d-6db5bc7dc425
+    - key: esctx-DYjebbv0s9g
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: false
-    - id: 094ee69f-23ce-4441-8169-152d879f489f
-      key: esctx-QNZhmGl1iw
-      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQE-9ou9R81qfW8UpsW-2rl7ZH8YyQC6vIhldRMItJXAnC5Dm0AZonJfi90GQalh4YSQWTvBEtLC-5B8MsjXnmlXxXMM2q0Oomm2fPBlmvKbVNlssrYeGz5fwGv5KEB-XTgoRVoXCdWEXo1PsSwjFpGGyAA
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-15T12:40:11.894Z
+      sameSite: none
+      id: f007faf5-0393-4d60-8174-a48d20c2604f
+    - key: esctx-QNZhmGl1iw
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: false
-    - id: 07c19de8-561d-4c0b-99b3-f22bda9eaeab
-      key: esctx-7Yw5kLHDBU
-      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQE3pt4rtz9Y8jVj9YyA7zaRTlYmHPREByatK9MjfYKT7glO9O-NZ4K_13xhQ-OESveWmo5XDLlA3I5b7PyZHtP-cE6MoSgnE-9EhLZJZjjBtbjFgfOUzQL7hWYxKDvblFX0t2JA6EFTmYsJgk5NQuNeSAA
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-15T12:40:11.894Z
+      sameSite: none
+      id: 5f3dc3b8-7c19-4277-ae66-5e9d63fed75a
+    - key: esctx-7Yw5kLHDBU
       domain: login.microsoftonline.com
       path: /
       secure: true
       httpOnly: true
       hostOnly: false
+      creation: 2025-05-15T12:40:11.890Z
+      lastAccessed: 2025-05-15T12:40:11.894Z
+      sameSite: none
+      id: 62c500d0-8c5e-4aac-86f3-ff935cec8215
+    - key: esctx-jjHcHDKkFa8
+      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQE341dWWZvEaoZMCTLiSKsBoFzC3hsAFuHIjg47t0wHAkFSYuZ7q2r7hOJQhLS9QbWD7l1_QF8il_YQggUz8WDFiIc1iFsRUVbmwNfpbhaKQLyxUQukw5W9xBiILHVULXFEhTtBJ9rHjg9dCnxZAWqfSAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+      creation: 2025-05-15T12:40:11.894Z
+      lastAccessed: 2025-05-15T12:40:11.894Z
+      sameSite: none
+      id: 4ab543f9-5ad3-41fa-a7bd-8e9412da3bb7
+    - key: esctx-i37Bszzcq8
+      value: AQABCQEAAABVrSpeuWamRam2jAF1XRQEf_nVd7HAcY5eBNz5I8MNRBunqZVGT_Bi8kdHKkFqO4sl87MEsPHlh8WH9MkSpyCWulQfKI12H70WFIZS4qpVvOq5DpVvo7pVagUuz7CyyQkhSk2CWIMBgY3BRQWLiaCitJMTyPkIiUoPBalz4kiBUCAA
+      domain: login.microsoftonline.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+      creation: 2025-05-15T13:19:28.110Z
+      lastAccessed: 2025-05-15T13:19:28.110Z
+      sameSite: none
+      id: 197b73a8-3725-49c7-9b0b-f9c7f733e330
 environments:
   name: Base Environment
   meta:
-    id: env_10b35a2df926457caf43c55f6aa2b101
+    id: env_cab7a121ca544000b149423c7ae15ece
     created: 1747213983667
     modified: 1747216164781
     isPrivate: false
@@ -199,11 +244,11 @@ environments:
     baseUrl: https://login.microsoftonline.com
     redirectUri: https://redirect.insomnia.de
   subEnvironments:
-    - name: SteinauTech
+    - name: YourCompany
       meta:
-        id: env_0aa5d63daa00419dab6ec58d64ed8fb3
+        id: env_fce9756eb9424898838d052b70358311
         created: 1747216108847
-        modified: 1747402958944
+        modified: 1747403137695
         isPrivate: false
         sortKey: 1747216108845
       data:

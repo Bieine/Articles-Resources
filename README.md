@@ -1,6 +1,6 @@
 ## Lessons Learned from Orchestrating Notebooks in a Medallion Architecture with Apache Airflow Job Task
 
-While building a data project in Microsoft Fabric based on a **medallion architecture**, I structured the solution using **modular notebooks**. For each layer—**bronze, silver**, and **gold**—a **parent notebook** orchestrates the workflow and calls a **child notebook**. The parent contains a list of parameter objects that describe things like the source table, create table statements and other things. Each parameter object is passed to a child notebook which the executes whatever it needs to to. And since there is one parameter object for each table that needs to be processed, there are a lot of child notebooks that need to run on each layer.
+While building a data project in Microsoft Fabric based on a **medallion architecture**, I structured the solution using **modular notebooks**. For each layer—**bronze, silver**, and **gold**—a **parent notebook** orchestrates the workflow and calls a **child notebook**. The parent contains a list of parameter objects that describe things like the source table, create table statements and other things. Each parameter object is passed to a child notebook which the executes whatever it needs to. And since there is one parameter object for each table that needs to be processed, there are a lot of child notebooks that need to run on each layer.
 
 For example:
 
@@ -44,7 +44,7 @@ In the Fabric Tenant Admin Settings, make sure that you have enabled the access 
 ### Settings in Entra Admin Center
 
 1. In the [Entra Admin Center](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/ConsentPoliciesMenuBlade/~/UserSettings)
-, sign in as a Peivileged Role Administrator. 
+, sign in as a Privileged Role Administrator. 
 2. Browse for "User Consent Settings" in the Search Bar. 
 3. Select "Allow user consent for apps".  
 
@@ -62,10 +62,18 @@ The basic steps are:
 1. Provide a name, e.g., AirFlow
 2. Under *Authentication*, add a Platform, web link, with the Redirect URI set to **https://login.microsoftonline.com/common/oauth2/nativeclient**
 
-
 ![uri](./images/azure_uri.png)
 
-3. Under *Certificates and secrets*, add a *New client secret*. Beware that you will need it later, so I recommend that you save it in an Azure Key Vault or a password maanager, otherwise you need to copy the **value** right away or you won't be able to access it a a later point. 
+  Furthermore under *Mobile and desktop applications* add the following redirect URI. This is needed to make Insomnia work (see later):
+
+  ```
+  https://redirect.insomnia.de
+  ````
+
+  ![consent](./images/azure_redirect_insomnia.png)
+
+
+3. Under *Certificates and secrets*, add a *New client secret*. Beware that you will need it later, so I recommend that you save it in an Azure Key Vault or a password manager, otherwise you need to copy the **value** right away or you won't be able to access it a a later point. 
 
 ![secret](./images/secret.png)
 
@@ -108,7 +116,7 @@ This setup ensures Airflow can execute Fabric items securely and without interru
 
 The way to obtain a refresh token was using the [OAuth2 auth code flow protocol](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow) .
 
-We used [Insomnia](https://insomnia.rest/download) for this. We have prepared a template (link here to github) which you can reuse using your own parameters. We hope that this saves time and headaches ;-)
+We used [Insomnia](https://insomnia.rest/download) for this. We have prepared a template [here](https://github.com/Bieine/Articles-Resources/blob/main/refreshtoken.yaml) which you can reuse using your own parameters. We hope that this saves time and headaches ;-)
 
 1. Install the [Insomnia](https://insomnia.rest/download) client if necessary. 
 
@@ -161,7 +169,7 @@ https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize?client_id={cl
 
 ![import](./images/insomnia__6.png)
 
-Copy the URL and paste it in your browser. The browser URL will be replaced with a new URL. Doing this in the browser is not ideal and I will look further how to this entirely in Insomnia. For now it is clunky but works.
+Copy the URL and paste it in your browser. The browser URL will be replaced with a new URL. Doing this in the browser is not ideal and I will look further how to do this entirely in Insomnia. For now it is clunky but works.
 
 https://redirect.insomnia.de/?**code**=1.AS8AV5Uo6KfUGk-npxp-DIOHao8vDLraPVNNj5pwqbimHvovAFsvAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P_37KF9rUF&state=12345&session_state=004e7609-e2f8-3e80-fa3b-34fe80803747
 
@@ -187,7 +195,7 @@ You will get a status *200* (Ok) back with the **refresh token** in the body.
 ### Set-up in Apache Airflow 
 
 In Fabric, create a new Airflow job in the Workspace where you added the SNP of the Application you created in Azure. 
-Under *Environenment configuration* check the "Enable triggers". This option allows you the usage of deferrable operators. 
+Under *Environment configuration* check the "Enable triggers". This option allows you the usage of deferrable operators. 
 
 Under "Apache Airflow requirements make sure to add those two plugins:
 
