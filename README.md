@@ -41,12 +41,21 @@ In the Fabric Tenant Admin Settings, make sure that you have enabled the access 
 ![spn](./images/settings_spn.png)
 
 
-### Settings in Entra Admin Center
+### A Note About "User Consent Settings" in Microsoft Entra Admin Center
 
-1. In the [Entra Admin Center](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/ConsentPoliciesMenuBlade/~/UserSettings)
-, sign in as a Privileged Role Administrator. 
-2. Browse for "User Consent Settings" in the Search Bar. 
-3. Select "Allow user consent for apps".  
+You may come across official [Microsoft documentation](https://learn.microsoft.com/en-us/fabric/data-factory/apache-airflow-jobs-run-fabric-item-job) suggesting that you need to enable the following setting:
+
+**Allow user consent for apps**
+
+This option is found under User consent settings and requires Privileged Role Administrator permissions to configure.
+
+However, **this is not required** to run Apache Airflow jobs in Microsoft Fabric.
+It works **perfectly fine without changing this setting.**
+
+In fact, from a security standpoint, it is **strongly recommended** to **leave this setting at “Do not allow user consent”** unless there is a compelling and controlled use case.
+
+Keep **"Do not allow user consent"** selected to maintain a secure tenant configuration.
+Only adjust this if absolutely necessary and with full understanding of the risks.
 
 ![consent](./images/azure_consent.png)
 
