@@ -96,7 +96,7 @@ The basic steps are:
 5. Copy the following parameters from the created App for later use (e.g., paste it in a .txt file):
 
 - Tenant ID
-- Object ID
+- Client ID
 - Client Secret
 
 ![parameters](./images/azure_parameters.png)
